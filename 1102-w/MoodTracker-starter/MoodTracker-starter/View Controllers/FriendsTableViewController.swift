@@ -10,6 +10,7 @@ import UIKit
 
 class FriendsTableViewController: UITableViewController {
     
+    // MARK: Variables
     static let angryString = "Rinse yourself before entering"
     static let happyString = "PTL"
     static let mediumString = "Yes you may eat and drink"
@@ -21,12 +22,35 @@ class FriendsTableViewController: UITableViewController {
         Friend.init(name: "John", mood: .happy)
     ]
     
+    // MARK: Actions
+    func updateInfo(index: Int) {
+        
+        let friendUpdate = friendArray[index]
+        
+        switch friendUpdate.mood {
+        case .happy:
+            friendUpdate.mood = .medium
+        case .medium:
+            friendUpdate.mood = .angry
+        case .angry:
+            friendUpdate.mood = .happy
+        }
+        tableView.reloadData()
+    }
+    
+    func updateFriend(index: Int) {
+    
+        let friendUpdate = friendArray[index]
+        
+    }
+    
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    
+    // MARK: TableView
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -39,7 +63,12 @@ class FriendsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell") as! FriendTableViewCell
         
         let friend = friendArray[indexPath.row]
+        
         cell.nameLabel.text = friend.name
+        cell.descriptionLabel.text = FriendsTableViewController.happyString
+        cell.moodLabel.setTitle(Mood.happy.rawValue, for: .normal)
+        cell.friendTableVC = self
+        cell.moodLabel.tag = indexPath.row
         
         switch friend.mood {
         case .happy:
@@ -53,11 +82,9 @@ class FriendsTableViewController: UITableViewController {
             cell.moodLabel.setTitle(Mood.medium.rawValue, for: .normal)
         }
         
-        cell.descriptionLabel.text = FriendsTableViewController.happyString
-        cell.moodLabel.setTitle(Mood.happy.rawValue, for: .normal)
-
-        
         return cell
     }
+    
+    
     
 }

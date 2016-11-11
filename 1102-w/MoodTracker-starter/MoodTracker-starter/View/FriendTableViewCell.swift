@@ -9,21 +9,20 @@
 import UIKit
 
 class FriendTableViewCell: UITableViewCell {
-  
-  var friend: Friend? // stores the friend that is displayed in this cell
-  
+    
+    // MARK: Variables
+    var friendTableVC: FriendsTableViewController!
+
+    // MARK: IBOutlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var moodLabel: UIButton!
     
-  @IBAction func moodButtonPressed(_ sender: UIButton) {
-    print(#line, #function)
+    // MARK: IBActions
+    @IBAction func moodButtonPressed(_ sender: UIButton) {
+        friendTableVC.updateInfo(index: sender.tag)
+    }
     
-  }
-
-
-  
-
-  
-  
+    
+    
 }

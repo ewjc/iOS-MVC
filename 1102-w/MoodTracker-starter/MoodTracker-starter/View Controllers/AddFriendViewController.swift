@@ -9,6 +9,9 @@
 import UIKit
 
 class AddFriendViewController: UIViewController {
+    
+    // MARK: Variables
+    //var friendsVC = FriendsTableViewController!
   
   // MARK: View Controller Lifecycle
   
