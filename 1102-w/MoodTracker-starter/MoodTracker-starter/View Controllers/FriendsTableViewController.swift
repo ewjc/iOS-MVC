@@ -38,10 +38,9 @@ class FriendsTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func updateFriend(index: Int) {
-    
-        let friendUpdate = friendArray[index]
-        
+    func newFriend(friend: Friend) {
+        friendArray.append(friend)
+        tableView.reloadData()
     }
     
     // MARK: View Life Cycle
@@ -85,6 +84,12 @@ class FriendsTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "desitinationID" {
+            let addfriendVC = segue.destination as! AddFriendViewController
+            addfriendVC.friendsVC = self
+        }
+    }
     
     
 }
