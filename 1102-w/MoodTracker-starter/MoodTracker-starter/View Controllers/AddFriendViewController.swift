@@ -26,6 +26,9 @@ class AddFriendViewController: UIViewController {
   // MARK: Actions
   
   @IBAction func saveButtonPressed(_ sender: AnyObject) {
+    
+
+
     let name = nameTextField.text
     var mood: Mood!
     
@@ -34,14 +37,15 @@ class AddFriendViewController: UIViewController {
     case 1: mood = Mood.medium
     case 2: mood = Mood.angry
     default: mood = Mood.happy
+        
     }
     
     let friend = Friend(name: name!, mood: mood)
     friendsVC.newFriend(friend: friend)
     
     dismissViewController()
-  }
-  
+        }
+    
   @IBAction func cancelButtonPressed(_ sender: AnyObject) {
     dismissViewController()
   }

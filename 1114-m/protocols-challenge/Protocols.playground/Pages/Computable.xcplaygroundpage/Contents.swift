@@ -6,19 +6,51 @@ protocol Computable {
     func compute() -> Int
 }
 
-class Sum {
-  var numbers = [1,2,3,4,5,6,7,8,9]
+class Sum: Computable {
+    var numbers = [1,2,3,4,5,6,7,8,9]
+    
+    func compute() -> Int {
+        
+        var result = 0
+        
+        for i in numbers {
+            result += i
+        }
+        return result
+    }
 }
 
-class Product {
+class Product: Computable {
   var numbers = [1,2,3,4,5,6,7,8,9]
+    
+    func compute() -> Int {
+        var result = 1
+        
+        for i in numbers {
+            result *= i
+        }
+        return result
+    }
 }
 
-class CountCharacters {
+class CountCharacters: Computable {
   var string: String = "odinfeoivneflndwcnervbunlinwe;dqwmid"
+    
+    func compute() -> Int {
+        return string.characters.count
+    }
 }
 
-class Random {
+class Random: Computable {
+    var numbers = [1,2,3,5,8,13,21,34,55,89,144]
+    func compute() -> Int {
+        var results = 1
+        
+        for i in numbers {
+            results *= i
+        }
+            return results
+    }
   
 }
 
@@ -27,7 +59,12 @@ let product = Product()
 let countCharacters = CountCharacters()
 let random = Random()
 
-//let arrayOfComputables = [sum, product, countCharacters, random]
+let arrayOfComputables: [Computable] = [sum, product, countCharacters, random]
+
+print(sum.compute())
+print(product.compute())
+print(countCharacters.compute())
+print(random.compute())
 
 /*:
  **Tasks**: 
